@@ -1,0 +1,54 @@
+package com.trungtamjava.controller.admin;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.trungtamjava.dao.UserDao;
+import com.trungtamjava.impl.UserDaoImpl;
+import com.trungtamjava.model.User;
+@WebServlet(urlPatterns = "/admin/user/update")///?id=123&name=abc
+public class AdminUpdateUserController extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String id = req.getParameter("id");
+		
+		UserDao userDao = new UserDaoImpl();
+		User user = userDao.get(Integer.parseInt(id));
+
+		req.setAttribute("user", user);
+
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/view/user/update-user.jsp");
+		dispatcher.forward(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String name = req.getParameter("yourname");
+		String username = req.getParameter("username");
+		String id = req.getParameter("id");
+
+		User user = new User();
+		user.setId(Integer.parseInt(id));
+		user.setName(name);
+		user.setUsername(username);
+		user.setPassword(req.getParameter("password"));
+		user.setRole(req.getParameter("role"));
+		user.setGender(req.getParameter("gender"));
+		user.setCity(req.getParameter("city"));
+		user.setImageName(req.getParameter("imageName"));
+
+		/// save to database
+		UserDao userDao = new UserDaoImpl();
+		userDao.update(user);
+
+		// chuyen huong
+		resp.sendRedirect(req.getContextPath() + "/admin/user/search");
+	}
+
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML FORM</title>
+</head>
+<body>
+	<form action="#" method="post">
+		<div>
+			<label>Username:</label> <input type="text" value="" name="username">
+		</div>
+		<div>
+			<label>Password:</label> <input type="password" value="" name="pass">
+		</div>
+		<div>
+		  <label>Gioi tinh:</label>
+		  <input type="radio" name="gender" value="F"> Nam
+		  <input type="radio" name="gender" value="M"> Nu
+		  <input type="radio" name="gender" value="NA"> N/A
+		</div>
+		<div>
+		  <label>So thich:</label>
+		  <input type="checkbox" name="favorite" value="cafe"> Cafe
+		  <input type="checkbox" name="favorite" value="music"> Music
+		  <input type="checkbox" name="favorite" value="game"> Game
+		</div>
+		<div>
+		  <label>TP:</label>
+		  <select name="city">
+		     <option>Ha Noi</option>
+		     <option>HCM</option>
+		     <option>Da Nang</option>
+		  </select>
+		</div>
+		<div>
+		  <label>Ghi chu:</label>
+		  <textarea name="note" rows="3" cols="20">
+		  </textarea>
+		</div>
+		<div>
+		  <label>File:</label>
+		  <input type="file" name="file">
+		</div>
+		<div>
+			<!--  <input type="submit" value="login"> -->
+			<button type="submit">Login</button>
+		</div>
+	</form>
+</body>
+</html>

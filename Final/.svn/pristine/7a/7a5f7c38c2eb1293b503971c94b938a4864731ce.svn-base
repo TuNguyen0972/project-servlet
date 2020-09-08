@@ -1,0 +1,54 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Add user</title>
+<link rel="stylesheet" href="HelloServlet13/admin/css/style.css">
+</head>
+<body>
+	<div class="container">
+		<form class="form-group" action="/Final/admin/user/add" method="post">
+			<div>
+				<label>Name:</label> 
+				<input type="text" name="yourname">
+			</div>
+			<div>
+				<label>Username:</label> 
+				<input type="text" name="username">
+			</div>
+			<div>
+				<label>Password:</label> 
+				<input type="password" name="password">
+			</div>
+			<div>
+				<label>Gender:</label> 
+				<input type="radio" name="gender" value="M" checked="checked">Nam 
+				<input type="radio" name="gender" value="F">Nu
+			</div>
+			<div>
+				<label>Noi sinh:</label> 
+				<select name="city">
+					<option value="Hanoi">Hanoi</option>
+					<option value="TP.HCM">TP.HCM</option>
+					<option value="Hai Phong">Hai Phong</option>
+				</select>
+			</div>
+			<div>
+				<label>Vai tro:</label> 
+				<select name="role">
+					<option value="ADMIN">ADMIN</option>
+					<option value="MEMBER">THANH VIEN</option>
+				</select>
+			</div>
+			<div>
+				<label>Link Anh:</label> 
+				<input type="text" name="imageName">
+			</div>
+			<div>
+				<button type="submit">Them</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+label {
+	color: #fcba03;
+	font-size: 20px;
+}
+
+input {
+	border-color: red;
+	border-width: 1px;
+	border-radius: 5px;
+	border-style: dotted;
+}
+
+label#gender-label {
+	color: red;
+}
+
+div.form-group {
+	margin: 10px;
+	padding: 10px;
+	border: 1px solid red;
+	width: 50%;
+}
+
+.row {
+	background-color: yellow;
+}
+
+.form-group label {
+	font-weight: bold;
+}
+h1, h2, h3, h4, h5, h6{
+	font-weight: bold;
+	font-family: monospace;
+	
+}
+.btn-primary{
+	
+}

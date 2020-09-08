@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Danh sach nguoi dung</title>
+</head>
+<body>
+	<table border="1">
+		<caption>Danh sach nguoi dung</caption>
+		<thead align="center">
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Address</th>
+				<th>Gender</th>
+			</tr>
+		</thead>
+	</table>
+	<ul style="list-style-type: circle;">
+		<li>Id</li>
+		<li>Name</li>
+		<li>Age</li>
+		<li>Address</li>
+		<li>Gender</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,62 @@
+package com.trungtamjava.controller;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.trungtamjava.dao.UserDao;
+import com.trungtamjava.impl.UserDaoImpl;
+import com.trungtamjava.model.User;
+
+@WebServlet(urlPatterns = "/dang-nhap")
+public class LoginController extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String error = req.getParameter("err");
+		if (error != null) {
+			req.setAttribute("errorMsg", "Tai khoan hoac mat khau sai");
+		}
+		// tao cookie
+		// Cookie cookie = new Cookie("name","TrungTamJava");
+		// cookie.setPath("/Userweb1/");
+		// cookie.setMaxAge(5*60);
+		// resp.addCookie(cookie);
+
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/client/login.jsp");
+		dispatcher.forward(req, resp);
+
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String email = req.getParameter("email");// ten cua input
+		String password = req.getParameter("password");// ten cua input
+		UserDao userDao = new UserDaoImpl();
+		User user = userDao.getByUsername(email);
+		if (user != null && user.getPassword().equals(password)) {// sau nay lay
+																	// o
+																	// database
+																	// ra
+			System.out.println("DN thanh cong");
+			HttpSession session = req.getSession();
+			System.out.println(session.getId());
+		
+			session.setAttribute("email", email);// luu lai tai khoan email
+			session.setAttribute("password", password);// luu lai mat khau 123
+			resp.sendRedirect("/Final/trang-chu");
+		} else {
+			System.out.println("that bai");
+			// chuyen huong view trang bang
+			resp.sendRedirect("/Final/dang-nhap?err=1");// bien err duoc goi o
+														// doget
+
+		}
+	}
+}

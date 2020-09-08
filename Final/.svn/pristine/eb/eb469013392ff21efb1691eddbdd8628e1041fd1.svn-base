@@ -1,0 +1,42 @@
+package com.trungtamjava.controller;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.trungtamjava.model.User;
+
+@WebServlet(urlPatterns = "dang-ky")
+public class RegisterController extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/client/register.jsp");
+		dispatcher.forward(req, resp);
+	}
+
+	// cho form goi len method=post
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String username = req.getParameter("username");
+		String pass = req.getParameter("pass");
+		String name = req.getParameter("name");
+		
+		String gender = req.getParameter("gender");
+		String address = req.getParameter("address");
+		String note = req.getParameter("note");
+		
+		User p = new User();
+		p.setUsername(username);
+		p.setPassword(pass);
+		p.setName(name);
+	
+		p.setGender(gender);
+    //  p.setAddress(address);
+	//	p.setNote(note);
+	}
+}
